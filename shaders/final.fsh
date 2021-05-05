@@ -13,7 +13,7 @@ uniform float viewHeight;
 vec2 resolution = vec2(viewWidth, viewHeight);
 
 // Get the texture size
-vec2 textureSize = textureSize(colortex4);
+vec2 textureSize = textureSize(colortex4, 0);
 
 // Set the character size
 const vec2 fontSize = vec2(8.0f, 16.0f);
@@ -47,7 +47,7 @@ void main() {
 		}
 	}
 	vec4 average = sum / vec4(fontSize.x * fontSize.y);
-	float brightness = avgVec3(average);
+	float brightness = avgVec3(average.rgb);
 	float asciiChar = floor((1.0f - brightness) * 256.0f) / 256.0f;
 	
 	#ifdef COLOR_ENABLE
